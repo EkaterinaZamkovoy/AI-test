@@ -1,0 +1,30 @@
+@import '@/styles/variables.scss';
+
+.wrapper {
+  padding: 10px 16px;
+}
+
+.track {
+  height: 16px;
+  background-color: $blue-060;
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  background-color: $blue-110;
+  transition: width 0.3s ease;
+}
+
+.step1 .fill {
+  width: 33.33%;
+}
+
+.step2 .fill {
+  width: 66.66%;
+}
+
+.step3 .fill {
+  width: 100%;
+}
