@@ -1,0 +1,63 @@
+@import '@/styles/variables.scss';
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 24px;
+  font-family: 'Circe Rounded', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  gap: 8px;
+
+  &.disabled {
+    background-color: $surface3;
+    color: $muted;
+    cursor: not-allowed;
+  }
+
+  &.withIcon.icon-right {
+    flex-direction: row;
+  }
+
+  &.withIcon.icon-left {
+    flex-direction: row-reverse;
+  }
+}
+
+.primary {
+  background-color: $blue-100;
+  color: $surface1;
+
+  &:hover {
+    background-color: $blue-110;
+  }
+
+  &:disabled {
+    background-color: $disabled-btn;
+    color: $muted;
+  }
+}
+
+.secondary {
+  background-color: $blue-050;
+  color: $default;
+
+  &:hover {
+    background-color: $blue-060;
+  }
+
+  &:disabled {
+    background-color: $disabled-btn;
+    color: $muted;
+  }
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+}

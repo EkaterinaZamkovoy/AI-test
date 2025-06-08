@@ -1,0 +1,35 @@
+@import '@/styles/variables.scss';
+
+.page {
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 80px;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.7)),
+    url('/pictures/kidsPic.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.main {
+  border: 3px solid yellow;
+  background-color: #ffffffe4;
+  border-radius: 100px;
+  padding: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.13);
+}
+
+.rainbowText {
+  background: linear-gradient(to top, red, orange, green, blue, indigo, violet);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* Для Firefox */
+  background-clip: text;
+  color: transparent;
+}
