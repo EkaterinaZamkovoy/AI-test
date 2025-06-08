@@ -1,0 +1,50 @@
+@import '@/styles/variables.scss';
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.box {
+  position: relative;
+  width: 216px;
+  height: 161px;
+  background-color: $surface3;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.preview {
+  width: 216px;
+  height: 161px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.rotate0 {
+  transform: rotate(0deg);
+}
+.rotate90 {
+  transform: rotate(90deg);
+}
+.rotate180 {
+  transform: rotate(180deg);
+}
+.rotate270 {
+  transform: rotate(270deg);
+}
+
+.flipBtn {
+  position: absolute;
+  background-color: transparent;
+  top: 49px;
+  right: 76px;
+  border: none;
+  cursor: pointer;
+}

@@ -1,0 +1,68 @@
+@import '@/styles/variables.scss';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  background-color: $surface1;
+  border-radius: 20px;
+  padding: 60px 60px 32px 60px;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  margin: 0 auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  h1 {
+    font-size: $font-size-title3;
+    font-weight: 700;
+  }
+
+  p {
+    font-size: $font-size-14;
+  }
+}
+
+.hint {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  text-align: center;
+  background-color: $red-050;
+  color: $red-110;
+  max-width: 500px;
+  padding: 8px 12px;
+  border-radius: 100px;
+
+  .icon {
+    align-self: center;
+    padding-top: 3px;
+  }
+}
+
+.uploads {
+  display: flex;
+  gap: 64px;
+  margin-bottom: 32px;
+}
+
+.buttonBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+
+  p {
+    font-size: $font-size-14;
+    color: $muted;
+  }
+
+  .button {
+    width: 125px;
+  }
+}

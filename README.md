@@ -4,13 +4,13 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 First, run the development server:
 
-npm install
+npm install, 
 npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 
-## прототип веб-интерфейса для онлайн-школы, в котором реализуется функционал ИИ-психодиагностики детей. 
+## Прототип веб-интерфейса для онлайн-школы, в котором реализуется функционал ИИ-психодиагностики детей. 
 
 React
 NextJS
