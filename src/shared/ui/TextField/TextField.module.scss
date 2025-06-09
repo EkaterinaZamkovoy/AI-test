@@ -1,0 +1,64 @@
+@import '@/styles/variables.scss';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.input {
+  height: 40px;
+  padding: 10px 12px;
+  border: 1px solid $muted;
+  border-radius: 6px;
+  font-size: 16px;
+  line-height: 135%;
+  background-color: $surface1;
+
+  &:hover,
+  &:focus,
+  &:active {
+    border-color: $violet-110;
+    outline: none;
+  }
+
+  &::placeholder {
+    color: $disabled;
+  }
+}
+
+.textarea {
+  min-height: 80px;
+  padding: 10px 12px;
+  font-size: 16px;
+  font-family: inherit;
+  border: 1px solid $muted;
+  border-radius: 6px;
+  background-color: $surface1;
+  resize: vertical;
+  line-height: 1.4;
+
+  &:hover,
+  &:focus {
+    border-color: $violet-110;
+    outline: none;
+  }
+
+  &::placeholder {
+    color: $disabled;
+  }
+}
+
+.error {
+  border-color: $red-110;
+}
+
+.helper {
+  font-size: 12px;
+  color: $red-110;
+}
