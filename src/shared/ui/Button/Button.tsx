@@ -7,11 +7,11 @@ import clsx from 'clsx';
 type Variant = 'primary' | 'secondary';
 type Direction = 'left' | 'right';
 
-interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
+type Props = {
   variant?: Variant;
   icon?: ReactNode;
   iconPosition?: Direction;
-}
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const Button = ({
   children,
