@@ -7,21 +7,24 @@ import { UploadItem } from './UploadItem';
 import Image from 'next/image';
 import WarningIcon from '/public/svg/WarningIcon.svg';
 import { Button } from '@/shared';
-
-const initialState = [null, null, null];
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { useUploadFilesMutation } from '@/store/api/uploadApi';
+import { setTaskId } from '@/store/slices/taskSlice';
 
 export const UploadForm = () => {
-  const [files, setFiles] = useState<(File | null)[]>(initialState);
-  const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useAppDispatch();
   const router = useRouter();
+  const [uploadFiles, { isLoading }] = useUploadFilesMutation();
 
-  const handleChange = (index: number, file: File | null) => {
-    const copy = [...files];
-    copy[index] = file;
-    setFiles(copy);
-  };
+  const [files, setFiles] = useState<(File | null)[]>([null, null, null]);
 
   const allUploaded = files.every(Boolean);
+
+  const handleChange = (index: number, file: File | null) => {
+    const newFiles = [...files];
+    newFiles[index] = file;
+    setFiles(newFiles);
+  };
 
   const handleSubmit = async () => {
     if (!allUploaded) return;
@@ -33,29 +36,12 @@ export const UploadForm = () => {
       }
     });
 
-    setIsLoading(true);
-
     try {
-      const response = await fetch(
-        'https://sirius-draw-test-94500a1b4a2f.herokuapp.com/upload',
-        {
-          method: 'POST',
-          body: formData,
-        }
-      );
-
-      const data = await response.json();
-
-      if (data?.task_id) {
-        localStorage.setItem('task_id', data.task_id);
-        router.push('/questions');
-      } else {
-        console.log('Не удалось получить task_id');
-      }
+      const result = await uploadFiles(formData).unwrap();
+      dispatch(setTaskId(result.task_id));
+      router.push('/questions');
     } catch (err) {
-      console.log('Ошибка при отправке файлов');
-    } finally {
-      setIsLoading(false);
+      console.log('Ошибка при отправке файлов', err);
     }
   };
 
