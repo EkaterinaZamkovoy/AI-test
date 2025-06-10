@@ -14,9 +14,16 @@ type Props = {
   onChange: (date: Date | undefined) => void;
   error?: string;
   placeholder?: string;
+  maxDate?: Date;
 };
 
-export const DatePicker = ({ label, value, onChange, error }: Props) => {
+export const DatePicker = ({
+  label,
+  value,
+  onChange,
+  error,
+  maxDate = new Date(),
+}: Props) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -47,12 +54,13 @@ export const DatePicker = ({ label, value, onChange, error }: Props) => {
                 month_caption: styles.monthCaption,
                 month: styles.month,
                 day: styles.day,
-                day_selected: styles.daySelected,
                 chevron: styles.chevron,
               }}
               modifiersClassNames={{
                 selected: styles.daySelected,
+                disabled: styles.dayDisabled,
               }}
+              disabled={(date) => date > maxDate}
               locale={ru}
             />
           </div>

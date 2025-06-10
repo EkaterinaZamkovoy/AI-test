@@ -262,6 +262,7 @@ export const QuestionsForm = () => {
                 onChange={(date) =>
                   field.onChange(date ? format(date, 'yyyy-MM-dd') : null)
                 }
+                maxDate={new Date()}
                 error={fieldState.error?.message}
               />
             )}
@@ -625,6 +626,7 @@ export const QuestionsForm = () => {
               К загрузке рисунков
             </Button>
             <Button
+              type='submit'
               className={styles.button}
               disabled={!isValid || !!submitError}
             >

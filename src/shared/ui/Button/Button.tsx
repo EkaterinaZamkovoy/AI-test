@@ -20,6 +20,7 @@ export const Button = ({
   iconPosition,
   disabled,
   className,
+  type = 'button',
   ...rest
 }: Props) => {
   return (

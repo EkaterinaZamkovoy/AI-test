@@ -60,7 +60,7 @@
   border-radius: 6px;
   cursor: pointer;
 
-  &:hover {
+  &:not(.dayDisabled):hover {
     background-color: $violet-100;
     color: $surface1;
   }
@@ -69,4 +69,10 @@
 .daySelected {
   background-color: $violet-100;
   color: $surface1;
+}
+
+.dayDisabled {
+  color: $muted;
+  pointer-events: none;
+  cursor: not-allowed;
 }
