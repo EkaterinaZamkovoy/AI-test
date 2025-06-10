@@ -6,8 +6,8 @@ import styles from './UploadForm.module.scss';
 import { UploadItem } from './UploadItem';
 import Image from 'next/image';
 import WarningIcon from '/public/svg/WarningIcon.svg';
-import { Button } from '@/shared';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { Button, Toast } from '@/shared';
+import { useAppDispatch } from '@/store/hooks';
 import { useUploadFilesMutation } from '@/store/api/uploadApi';
 import { setTaskId } from '@/store/slices/taskSlice';
 
@@ -17,6 +17,7 @@ export const UploadForm = () => {
   const [uploadFiles, { isLoading }] = useUploadFilesMutation();
 
   const [files, setFiles] = useState<(File | null)[]>([null, null, null]);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const allUploaded = files.every(Boolean);
 
@@ -24,6 +25,7 @@ export const UploadForm = () => {
     const newFiles = [...files];
     newFiles[index] = file;
     setFiles(newFiles);
+    setSubmitError(null);
   };
 
   const handleSubmit = async () => {
@@ -32,7 +34,7 @@ export const UploadForm = () => {
     const formData = new FormData();
     files.forEach((file, index) => {
       if (file) {
-        formData.append('files', file);
+        formData.append(`file_${index}`, file);
       }
     });
 
@@ -40,8 +42,13 @@ export const UploadForm = () => {
       const result = await uploadFiles(formData).unwrap();
       dispatch(setTaskId(result.task_id));
       router.push('/questions');
-    } catch (err) {
+    } catch (err: any) {
       console.log('Ошибка при отправке файлов', err);
+      let errorMessage = 'Произошла ошибка при загрузке файлов';
+      if (err.status >= 500) {
+        errorMessage = 'Сервер временно недоступен, попробуйте позже';
+      }
+      setSubmitError(errorMessage);
     }
   };
 
@@ -84,6 +91,9 @@ export const UploadForm = () => {
           {isLoading ? 'Загрузка...' : 'Далее →'}
         </Button>
       </div>
+      {submitError && (
+        <Toast message={submitError} onClose={() => setSubmitError(null)} />
+      )}
     </div>
   );
 };
