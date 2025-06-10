@@ -4,7 +4,7 @@ import { ButtonHTMLAttributes, ReactNode } from 'react';
 import styles from './Button.module.scss';
 import clsx from 'clsx';
 
-type Variant = 'primary' | 'secondary';
+type Variant = 'primary' | 'secondary' | 'close';
 type Direction = 'left' | 'right';
 
 type Props = {
@@ -30,6 +30,7 @@ export const Button = ({
         disabled && styles.disabled,
         icon && styles.withIcon,
         styles[`icon-${iconPosition}`],
+        variant === 'close' && styles.close,
         className
       )}
       disabled={disabled}

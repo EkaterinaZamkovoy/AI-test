@@ -61,3 +61,12 @@
   display: inline-flex;
   align-items: center;
 }
+
+.close {
+  width: 16px;
+  height: 16px;
+  font-size: 40px;
+  font-weight: bold;
+  background-color: inherit;
+  color: $surface1;
+}
