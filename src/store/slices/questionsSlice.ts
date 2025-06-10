@@ -2,58 +2,104 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type FormValues = {
   childName: string;
-  birthDate: Date | undefined;
-  gender: string;
+  childDOB: string | null;
+  childGender: string;
   parentName: string;
-  emotionalSphere_one: string;
-  emotionalSphere_two: string;
-  emotionalSphere_three: string;
-  emotionalSphere_four: string;
-  socialCommunication_one: string;
-  socialCommunication_two: string;
-  socialCommunication_three: string;
-  socialCommunication_four: string;
-  selfRegulation_one: string;
-  selfRegulation_two: string;
-  selfRegulation_three: string;
-  selfRegulation_four: string;
-  selfEsteem_one: string;
-  selfEsteem_two: string;
-  selfEsteem_three: string;
-  selfEsteem_four: string;
-  generalEmotionalState: string;
-  developmentFeatures: string;
-  talents: string;
-  specialAttention: string;
-  contactedSpecialists: string;
+
+  q1_1: string;
+  q1_2: string;
+  q1_3: string;
+  q1_4: string;
+  q1_5: string;
+  q1_6: string;
+  q1_7: string;
+  q1_8: string;
+  q1_9: string;
+  q1_10: string;
+
+  q2_1: string;
+  q2_2: string;
+  q2_3: string;
+  q2_4: string;
+  q2_5: string;
+  q2_6: string;
+  q2_7: string;
+  q2_8: string;
+  q2_9: string;
+  q2_10: string;
+
+  q3_1: string;
+  q3_2: string;
+  q3_3: string;
+  q3_4: string;
+  q3_5: string;
+  q3_6: string;
+  q3_7: string;
+  q3_8: string;
+  q3_9: string;
+  q3_10: string;
+  q4_1: string;
+  q4_2: string;
+  q4_3: string;
+  q4_4: string;
+  q4_5: string;
+  q4_6: string;
+  q4_7: string;
+  q4_8: string;
+  q4_9: string;
+  q4_10: string;
+  emotionalState: string;
 };
 
 const initialState: FormValues = {
   childName: '',
-  birthDate: undefined,
-  gender: '',
+  childDOB: null,
+  childGender: '',
   parentName: '',
-  emotionalSphere_one: '',
-  emotionalSphere_two: '',
-  emotionalSphere_three: '',
-  emotionalSphere_four: '',
-  socialCommunication_one: '',
-  socialCommunication_two: '',
-  socialCommunication_three: '',
-  socialCommunication_four: '',
-  selfRegulation_one: '',
-  selfRegulation_two: '',
-  selfRegulation_three: '',
-  selfRegulation_four: '',
-  selfEsteem_one: '',
-  selfEsteem_two: '',
-  selfEsteem_three: '',
-  selfEsteem_four: '',
-  generalEmotionalState: '',
-  developmentFeatures: '',
-  talents: '',
-  specialAttention: '',
-  contactedSpecialists: '',
+
+  q1_1: '',
+  q1_2: '',
+  q1_3: '',
+  q1_4: '',
+  q1_5: '',
+  q1_6: '',
+  q1_7: '',
+  q1_8: '',
+  q1_9: '',
+  q1_10: '',
+
+  q2_1: '',
+  q2_2: '',
+  q2_3: '',
+  q2_4: '',
+  q2_5: '',
+  q2_6: '',
+  q2_7: '',
+  q2_8: '',
+  q2_9: '',
+  q2_10: '',
+
+  q3_1: '',
+  q3_2: '',
+  q3_3: '',
+  q3_4: '',
+  q3_5: '',
+  q3_6: '',
+  q3_7: '',
+  q3_8: '',
+  q3_9: '',
+  q3_10: '',
+  q4_1: '',
+  q4_2: '',
+  q4_3: '',
+  q4_4: '',
+  q4_5: '',
+  q4_6: '',
+  q4_7: '',
+  q4_8: '',
+  q4_9: '',
+  q4_10: '',
+  emotionalState: '',
 };
 
 const questionsSlice = createSlice({

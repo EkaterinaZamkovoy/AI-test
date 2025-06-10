@@ -84,3 +84,14 @@
   right: 30px;
   color: $surface1;
 }
+
+.errorAlert {
+  margin: 20px 0;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.errorAlert button {
+  margin-left: 15px;
+}
