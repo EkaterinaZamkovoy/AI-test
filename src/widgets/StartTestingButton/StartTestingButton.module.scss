@@ -1,3 +1,7 @@
 .button {
   font-size: 40px;
+
+  @media (max-width: $breakpoint-xs) {
+    font-size: 24px;
+  }
 }

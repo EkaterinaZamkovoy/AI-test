@@ -34,7 +34,7 @@ export const UploadForm = () => {
     const formData = new FormData();
     files.forEach((file, index) => {
       if (file) {
-        formData.append(`file_${index}`, file);
+        formData.append('files', file);
       }
     });
 

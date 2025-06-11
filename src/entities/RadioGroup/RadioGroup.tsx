@@ -1,5 +1,6 @@
 import { RadioButton } from '@/shared';
 import styles from './RadioGroup.module.scss';
+import clsx from 'clsx';
 
 type Option = {
   label: string;
@@ -14,6 +15,7 @@ type Props = {
   options: Option[];
   error?: string;
   className?: string;
+  columnLayout?: boolean;
 };
 
 export const RadioGroup = ({
@@ -23,11 +25,14 @@ export const RadioGroup = ({
   onChange,
   options,
   error,
+  columnLayout,
 }: Props) => {
   return (
     <div className={styles.group}>
       {label && <p className={styles.groupLabel}>{label}</p>}
-      <div className={styles.options}>
+      <div
+        className={clsx(styles.options, columnLayout && styles.columnLayout)}
+      >
         {options.map((option) => (
           <RadioButton
             key={option.value}

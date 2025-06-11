@@ -227,7 +227,7 @@ export const QuestionsForm = () => {
         return;
       }
       reset();
-      router.push('/result');
+      router.push(`/result?taskId=${taskId}`);
     } catch (err) {
       console.error('Ошибка при отправке анкеты:', err);
       setSubmitError(
@@ -563,6 +563,7 @@ export const QuestionsForm = () => {
                     },
                     { label: 'Очень плохое', value: 'Очень плохое' },
                   ]}
+                  columnLayout
                 />
               )}
             />
