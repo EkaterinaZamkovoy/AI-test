@@ -12,7 +12,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Прототип веб-интерфейса для онлайн-школы, в котором реализуется функционал ИИ-психодиагностики детей. 
 
-React
-NextJS
-Redux Toolkit
-TypeScript
+React,
+NextJS,
+Redux Toolkit,
+RTK Query,
+TypeScript,
