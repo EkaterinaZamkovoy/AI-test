@@ -17,7 +17,6 @@ type BaseProps = {
 type ButtonProps = BaseProps &
   ButtonHTMLAttributes<HTMLButtonElement> & {
     as?: 'button';
-    type?: 'button' | 'submit' | 'reset';
   };
 
 type LinkProps = BaseProps &
@@ -34,7 +33,6 @@ export const Button = ({
   iconPosition,
   disabled,
   className,
-  type = 'button',
   as = 'button',
   ...rest
 }: Props) => {

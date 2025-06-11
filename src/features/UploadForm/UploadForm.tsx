@@ -10,6 +10,7 @@ import { Button, Toast } from '@/shared';
 import { useAppDispatch } from '@/store/hooks';
 import { useUploadFilesMutation } from '@/store/api/uploadApi';
 import { setTaskId } from '@/store/slices/taskSlice';
+import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 
 export const UploadForm = () => {
   const dispatch = useAppDispatch();
@@ -32,7 +33,7 @@ export const UploadForm = () => {
     if (!allUploaded) return;
 
     const formData = new FormData();
-    files.forEach((file, index) => {
+    files.forEach((file) => {
       if (file) {
         formData.append('files', file);
       }
@@ -42,10 +43,15 @@ export const UploadForm = () => {
       const result = await uploadFiles(formData).unwrap();
       dispatch(setTaskId(result.task_id));
       router.push('/questions');
-    } catch (err: any) {
+    } catch (err) {
+      const error = err as FetchBaseQueryError;
       console.log('Ошибка при отправке файлов', err);
       let errorMessage = 'Произошла ошибка при загрузке файлов';
-      if (err.status >= 500) {
+      if (
+        'status' in error &&
+        typeof error.status === 'number' &&
+        error.status >= 500
+      ) {
         errorMessage = 'Сервер временно недоступен, попробуйте позже';
       }
       setSubmitError(errorMessage);
