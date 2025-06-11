@@ -5,8 +5,7 @@ type Props = {
 };
 
 export default function ResultPage({ searchParams }: Props) {
-  //   const taskId = searchParams.taskId ?? '';
+  const taskId = searchParams.taskId ?? '';
 
-  const taskId = 'c72a5392-bdc2-424f-b502-8c46526d608b';
   return <ResultStatus taskId={taskId} />;
 }
