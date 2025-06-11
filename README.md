@@ -16,4 +16,4 @@ React,
 NextJS,
 Redux Toolkit,
 RTK Query,
-TypeScript,
+TypeScript
