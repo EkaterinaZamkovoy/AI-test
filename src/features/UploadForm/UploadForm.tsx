@@ -22,7 +22,18 @@ export const UploadForm = () => {
 
   const allUploaded = files.every(Boolean);
 
+  const MAX_FILE_SIZE_MB = 5;
+
   const handleChange = (index: number, file: File | null) => {
+    if (file) {
+      const maxBytes = MAX_FILE_SIZE_MB * 1024 * 1024;
+      if (file.size > maxBytes) {
+        setSubmitError(
+          `Файл слишком большой. Максимум ${MAX_FILE_SIZE_MB} МБ.`
+        );
+        return;
+      }
+    }
     const newFiles = [...files];
     newFiles[index] = file;
     setFiles(newFiles);

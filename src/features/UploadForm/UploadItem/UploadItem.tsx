@@ -41,16 +41,11 @@ export const UploadItem = ({ label, file, onChange }: Props) => {
     <div className={styles.item}>
       <label className={styles.box}>
         {preview ? (
-          <>
-            <img
-              src={preview}
-              alt='preview'
-              className={clsx(styles.preview, styles[`rotate${angle}`])}
-            />
-            <button type='button' className={styles.flipBtn} onClick={rotate}>
-              <Image src={FlipIcon} alt='rotateIcon' />
-            </button>
-          </>
+          <img
+            src={preview}
+            alt='preview'
+            className={clsx(styles.preview, styles[`rotate${angle}`])}
+          />
         ) : (
           <span className={styles.icon}>
             <Image src={UploadIcon} alt='Upload icon' />
@@ -63,6 +58,11 @@ export const UploadItem = ({ label, file, onChange }: Props) => {
           hidden
         />
       </label>
+      {preview ? (
+        <button type='button' className={styles.flipBtn} onClick={rotate}>
+          <Image src={FlipIcon} alt='rotateIcon' />
+        </button>
+      ) : null}
       <p className={styles.label}>{label}</p>
     </div>
   );
