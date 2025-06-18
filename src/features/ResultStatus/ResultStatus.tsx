@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import styles from './ResultStatus.module.scss';
-import { Button } from '@/shared';
+import { Button, useStep } from '@/shared';
 import DownloadIcon from '/public/svg/downloadIcon.svg';
 import Image from 'next/image';
 
@@ -16,6 +16,8 @@ export const ResultStatus = ({ taskId }: Props) => {
   );
   const [resultUrl, setResultUrl] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  const { currentStep, totalSteps } = useStep();
 
   useEffect(() => {
     if (!taskId) {
@@ -74,7 +76,9 @@ export const ResultStatus = ({ taskId }: Props) => {
     <div className={styles.ready}>
       <p className={styles.title}>Анализ завершён!</p>
       <div className={styles.linksform}>
-        <p>Шаг 3/3</p>
+        <p>
+          Шаг {currentStep}/{totalSteps}
+        </p>
         <div className={styles.links}>
           <Button
             as='a'

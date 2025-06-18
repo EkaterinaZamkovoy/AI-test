@@ -1,7 +1,7 @@
 'use client';
 
 import { Controller, useForm } from 'react-hook-form';
-import { Button, DatePicker, TextField, Toast } from '@/shared';
+import { Button, DatePicker, TextField, Toast, useStep } from '@/shared';
 import styles from './QuestionsForm.module.scss';
 import { RadioGroup } from '@/entities';
 import Image from 'next/image';
@@ -128,6 +128,8 @@ export const QuestionsForm = () => {
 
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+
+  const { currentStep, totalSteps } = useStep();
 
   const router = useRouter();
 
@@ -612,7 +614,9 @@ export const QuestionsForm = () => {
         </div>
 
         <div className={styles.bottomform}>
-          <p>Шаг 2/3</p>
+          <p>
+            Шаг {currentStep}/{totalSteps}
+          </p>
           <div className={styles.buttonsBlock}>
             <Button
               className={styles.button}

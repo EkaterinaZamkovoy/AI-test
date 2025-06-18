@@ -6,7 +6,7 @@ import styles from './UploadForm.module.scss';
 import { UploadItem } from './UploadItem';
 import Image from 'next/image';
 import WarningIcon from '/public/svg/WarningIcon.svg';
-import { Button, Toast } from '@/shared';
+import { Button, Toast, useStep } from '@/shared';
 import { useAppDispatch } from '@/store/hooks';
 import { useUploadFilesMutation } from '@/store/api/uploadApi';
 import { setTaskId } from '@/store/slices/taskSlice';
@@ -19,6 +19,7 @@ export const UploadForm = () => {
 
   const [files, setFiles] = useState<(File | null)[]>([null, null, null]);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const { currentStep, totalSteps } = useStep();
 
   const allUploaded = files.every(Boolean);
 
@@ -99,7 +100,9 @@ export const UploadForm = () => {
         />
       </div>
       <div className={styles.buttonBlock}>
-        <p>Шаг 1/3</p>
+        <p>
+          Шаг {currentStep}/{totalSteps}
+        </p>
         <Button
           className={styles.button}
           disabled={!allUploaded || isLoading}

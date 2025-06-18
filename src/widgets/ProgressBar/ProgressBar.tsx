@@ -1,14 +1,12 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
 import styles from './ProgressBar.module.scss';
-
-const steps = ['/upload-pictures', '/questions', '/result'];
+import { useStep } from '@/shared';
 
 export const ProgressBar = () => {
-  const pathname = usePathname();
-  const currentIndex = steps.findIndex((step) => pathname.startsWith(step));
-  const stepClass = styles[`step${currentIndex + 1}`] || '';
+  const { currentStep } = useStep();
+
+  const stepClass = styles[`step${currentStep}`] || '';
 
   return (
     <div className={styles.wrapper}>
